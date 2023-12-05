@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1701725448 source:c:\users\mrsoh\onedrive\documents\result management syetem\main.cpp
+	<iostream>
+	<vector>
+	<fstream>
+	<sstream>
+	<string>
+	<algorithm>
+	<iomanip>
+	<conio.h>
+	<windows.h>
+
