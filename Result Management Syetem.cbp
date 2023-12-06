@@ -37,6 +37,7 @@
 		<Unit filename="data.dat" />
 		<Unit filename="login.dat" />
 		<Unit filename="main.cpp" />
+		<Unit filename="noc.txt" />
 		<Unit filename="result.dat" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
