@@ -1,4 +1,11 @@
-#include <bits/stdc++.h>
+//#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <fstream>
+#include <sstream>
+#include <string>
+#include <algorithm>
+#include <iomanip>
 #include <conio.h>
 #include <windows.h>
 
@@ -96,8 +103,8 @@ void MainMenu() {
     cin >> cc;
     cout << endl;
     int choice;
-    if (cc != "1" and cc != "2" and cc != "3" and cc != "4")
-        choice = 5;
+    if (cc != "1" and cc != "2" and cc != "3" and cc != "4" and cc != "5")
+        choice = 6;
     else
         choice = stoi(cc); // string to integer
     switch (choice) {
@@ -306,7 +313,7 @@ void AdminOptions() {
     cout << "\t\t\t Press 4 to Show Statistics            " << endl;
     cout << "\t\t\t Press 5 to Generate Report            " << endl;
     cout << "\t\t\t Press 6 to Logout                     " << endl;
-    cout << "\n\t\t\t Please Enter Your Choice :  ";
+    cout << "\n\t\t\tEnter Your Choice :  ";
     string cc;
     cin >> cc;
     cout << endl;
@@ -438,6 +445,7 @@ void DataEntry() {
     ofstream myFile("data.dat", ios::out);
     ofstream cFile("coursedata.dat", ios::out);
     cin.ignore();
+    bool flag = false;
     for (int i = 1; i <= numberOfStudent; i++) {
         cout << "\n\t\t\tEnter Name Of The Student " << i << " : ";
         string name;
@@ -448,6 +456,12 @@ void DataEntry() {
         cout << "\n\t\t\tEnter Number Of Course : ";
         cin >> numberOfCourse;
         cin.ignore();
+        if(!flag) {
+            ofstream file("noc.dat", ios::out);
+            file<<numberOfCourse;
+            flag = true;
+            file.close();
+        }
         myFile << name << " " << id << endl;
         for (int j = 1; j <= numberOfCourse; j++) {
             string courseName;
@@ -477,10 +491,11 @@ void Calculate() {
     cout << "\t\t\t\t\t\tResult Management System\n";
     cout << "\t\t\t_____________________________________________________________\n\n";
     cout << "\n\n";
-    cout << "\t\t\tEnter number of course for each student: ";
+    cout << "\t\t\tCalculation Done\n";
     int numberOfCourse;
-    cin >> numberOfCourse;
-
+    ifstream file("noc.txt");
+    file>>numberOfCourse;
+    file.close();
     ofstream myFile("result.dat", ios::out); //Opening file in write mode
 
     ifstream din("data.dat");
@@ -739,6 +754,7 @@ void ReportGenerateS() {
         cout<<"\t\t\t------------------------------------------------------------------------------\n";
         cout<<"\t\t\t\t\t\t\t\t\tCGPA = "<<cg<<endl;
         fin.close();
+        cout << "\t\t\tPress Any Key To Continue...";
         getch();
         UserOption();
     }
